@@ -1,9 +1,17 @@
 
-.single div#amplitude-player {
-  max-width: 450px;
+@media screen and (orientation:landscape) { .single div#amplitude-player {
+    width: 33%;
+    display: flex;
+  }
 }
-.multi div#amplitude-player {
-  max-width: 900px;
+@media screen and (orientation:landscape) { .multi div#amplitude-player {
+    width: 66%;
+    display: flex;
+  }
+}
+@media screen and (orientation:portrait) { div#amplitude-player {
+    width: 88%;
+  }
 }
 div#amplitude-player {
   background: #FFFFFF;
@@ -11,26 +19,22 @@ div#amplitude-player {
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  display: flex;
 }
 @media screen and (max-width: 39.9375em) {
   div#amplitude-player {
     flex-direction: column;
   }
 }
-@media screen and (min-width: 40em) and (max-width: 63.9375em) {
-  div#amplitude-player {
-    max-height: 715px;
-  }
-}
-@media screen and (min-width: 64em) {
-  div#amplitude-player {
-    max-height: 715px;
-  }
-}
 .multi div#amplitude-left {
   border-right: 1px solid #CFD8DC;
-  width: 50%;
+}
+@media screen and (orientation:landscape) { .multi div#amplitude-left {
+    width: 50%;
+  }
+}
+@media screen and (orientation:portrait) { .multi div#amplitude-left {
+    width: 100%;
+  }
 }
 .single div#amplitude-left {
   width: 100%;
@@ -96,10 +100,17 @@ div#amplitude-left div#player-left-bottom div#volume-container:after {
 .multi div#amplitude-right {
     display: flex;
 }
+@media screen and (orientation:landscape) { .multi div#amplitude-right {
+    width: 50%;
+  }
+}
+@media screen and (orientation:portrait) { .multi div#amplitude-right {
+    width: 100%;
+  }
+}
 div#amplitude-right {
   padding: 0px;
   overflow-y: scroll;
-  width: 50%;
   flex-direction: column;
 }
 div#amplitude-right div.song {
@@ -141,7 +152,7 @@ div#amplitude-right div.song div.song-meta-data {
 }
 div#amplitude-right div.song div.song-meta-data span.song-title {
   color: #272726;
-  font-size: 16px;
+  font-size: 2em;
   display: block;
   font-weight: 300;
   white-space: nowrap;
