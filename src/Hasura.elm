@@ -1,23 +1,22 @@
 module Hasura exposing (backendTask)
 
 import BackendTask exposing (BackendTask)
-import BackendTask.Custom
+import BackendTask.Env
 import BackendTask.Http
 import FatalError exposing (FatalError)
 import Graphql.Document
 import Graphql.Operation exposing (RootQuery)
 import Graphql.SelectionSet exposing (SelectionSet)
-import Json.Decode as Decode
-import Json.Encode as Encode
+import Json.Encode
 
 
 backendTask : SelectionSet value RootQuery -> BackendTask FatalError value
 backendTask selectionSet =
-    BackendTask.Custom.run "environmentVariable" (Encode.string "ELM_APP_URL") Decode.string
+    BackendTask.Env.expect "ELM_APP_URL"
         |> BackendTask.allowFatal
         |> BackendTask.andThen
             (\url ->
-                BackendTask.Custom.run "environmentVariable" (Encode.string "ELM_APP_SECRET") Decode.string
+                BackendTask.Env.expect "ELM_APP_SECRET"
                     |> BackendTask.allowFatal
                     |> BackendTask.andThen
                         (\secret ->
@@ -30,11 +29,11 @@ backendTask selectionSet =
                                     ]
                                 , body =
                                     BackendTask.Http.jsonBody
-                                        (Encode.object
+                                        (Json.Encode.object
                                             [ ( "query"
                                               , selectionSet
                                                     |> Graphql.Document.serializeQuery
-                                                    |> Encode.string
+                                                    |> Json.Encode.string
                                               )
                                             ]
                                         )
