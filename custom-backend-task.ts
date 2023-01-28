@@ -1,4 +1,4 @@
-export default async function environmentVariable(name) {
+export async function environmentVariable(name) {
   const result = process.env[name];
   if (result) {
     return result;

@@ -8,22 +8,11 @@ export default async function run({
   htmlTemplate,
 }) {
   const renderPath = './elm-stuff/elm-pages/elm.cjs';
-  console.log("Running adapter script");
-  console.dir({portsFilePath});
-  console.dir({renderFunctionFilePath});
-  console.dir({renderPath});
   ensureDirSync("functions/render");
   ensureDirSync("functions/server-render");
 
-  fs.copyFileSync(
-    renderPath,
-    "./functions/render/elm-pages-cli.cjs"
-  );
-  fs.copyFileSync(
-    renderPath,
-    "./functions/server-render/elm-pages-cli.cjs"
-  );
-  fs.copyFileSync(portsFilePath, "./custom-backend-task.mjs");
+  fs.copyFileSync( renderPath, "./functions/render/elm-pages-cli.cjs");
+  fs.copyFileSync( renderPath, "./functions/server-render/elm-pages-cli.cjs");
   fs.copyFileSync(portsFilePath, "./functions/render/custom-backend-task.mjs");
   fs.copyFileSync(portsFilePath, "./functions/server-render/custom-backend-task.mjs");
 
