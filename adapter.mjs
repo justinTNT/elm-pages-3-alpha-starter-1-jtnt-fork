@@ -7,22 +7,23 @@ export default async function run({
   portsFilePath,
   htmlTemplate,
 }) {
+  const renderPath = './elm-stuff/elm-pages/elm.cjs';
   console.log("Running adapter script");
   ensureDirSync("functions/render");
   ensureDirSync("functions/server-render");
 
   fs.copyFileSync(
-    renderFunctionFilePath,
-    "./functions/render/elm-pages-cli.js"
+    renderPath,
+    "./functions/render/elm-pages-cli.cjs"
   );
   fs.copyFileSync(
-    renderFunctionFilePath,
-    "./functions/server-render/elm-pages-cli.js"
+    renderPath,
+    "./functions/server-render/elm-pages-cli.cjs"
   );
-  fs.copyFileSync(portsFilePath, "./functions/render/custom-backend-task.js");
+  fs.copyFileSync(portsFilePath, "./functions/render/custom-backend-task.mjs");
   fs.copyFileSync(
     portsFilePath,
-    "./functions/server-render/custom-backend-task.js"
+    "./functions/server-render/custom-backend-task.mjs"
   );
 
   fs.writeFileSync(
@@ -125,7 +126,7 @@ export const handler = render;`
  */
 async function render(event, context) {
   const requestTime = new Date();
-  const compiledPortsFile = "./custom-backend-task.js";
+  const compiledPortsFile = "./custom-backend-task.mjs";
 
   try {
     const basePath = "/";
@@ -135,7 +136,7 @@ async function render(event, context) {
     const renderResult = await renderer.render(
       compiledPortsFile,
       basePath,
-      (await import("./elm-pages-cli.js")).default,
+      (await import("./elm-pages-cli.cjs")).default,
       mode,
       event.path,
       await reqToJson(event, requestTime),
