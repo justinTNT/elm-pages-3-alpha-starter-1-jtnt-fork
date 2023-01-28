@@ -19,10 +19,10 @@ export default async function run({
     renderFunctionFilePath,
     "./functions/server-render/elm-pages-cli.js"
   );
-  fs.copyFileSync(portsFilePath, "./functions/render/custom-backend-task.mjs");
+  fs.copyFileSync(portsFilePath, "./functions/render/custom-backend-task.js");
   fs.copyFileSync(
     portsFilePath,
-    "./functions/server-render/custom-backend-task.mjs"
+    "./functions/server-render/custom-backend-task.js"
   );
 
   fs.writeFileSync(
@@ -125,7 +125,7 @@ export const handler = render;`
  */
 async function render(event, context) {
   const requestTime = new Date();
-  const compiledPortsFile = "./custom-backend-task.mjs";
+  const compiledPortsFile = "./custom-backend-task.js";
 
   try {
     const basePath = "/";
