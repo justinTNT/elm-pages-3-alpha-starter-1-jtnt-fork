@@ -130,6 +130,3 @@ perform ({ fromPageMsg, key } as helpers) effect =
 
 
 port amplitude : SetRenderer.SetList -> Cmd msg
-
-
-port environmentVariable : String -> Cmd msg
