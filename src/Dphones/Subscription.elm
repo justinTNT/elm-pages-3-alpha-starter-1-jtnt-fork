@@ -30,7 +30,7 @@ type alias MixenOptionalArguments =
     }
 
 
-{-| fetch data from the table: "mixen"
+{-| An array relationship
 
   - distinct\_on - distinct select on columns
   - limit - limit the number of rows returned
@@ -64,7 +64,7 @@ type alias MixenAggregateOptionalArguments =
     }
 
 
-{-| fetch aggregated fields from the table: "mixen"
+{-| An aggregate relationship
 
   - distinct\_on - distinct select on columns
   - limit - limit the number of rows returned

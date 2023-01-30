@@ -19,6 +19,15 @@ import Graphql.SelectionSet exposing (SelectionSet)
 import Json.Decode as Decode
 
 
+{-| An object relationship
+-}
+belongsTo :
+    SelectionSet decodesTo Dphones.Object.Set
+    -> SelectionSet (Maybe decodesTo) Dphones.Object.Mixen
+belongsTo object____ =
+    Object.selectionForCompositeField "belongsTo" [] object____ (Basics.identity >> Decode.nullable)
+
+
 index : SelectionSet (Maybe Int) Dphones.Object.Mixen
 index =
     Object.selectionForField "(Maybe Int)" "index" [] (Decode.int |> Decode.nullable)

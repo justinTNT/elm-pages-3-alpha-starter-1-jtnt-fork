@@ -6,6 +6,7 @@ module Dphones.InputObject exposing (..)
 
 import Dphones.Enum.Cursor_ordering
 import Dphones.Enum.Mixen_constraint
+import Dphones.Enum.Mixen_select_column
 import Dphones.Enum.Mixen_update_column
 import Dphones.Enum.Order_by
 import Dphones.Enum.Set_constraint
@@ -119,6 +120,228 @@ encodeInt_comparison_exp input____ =
         [ ( "_eq", Encode.int |> Encode.optional input____.eq_ ), ( "_gt", Encode.int |> Encode.optional input____.gt_ ), ( "_gte", Encode.int |> Encode.optional input____.gte_ ), ( "_in", (Encode.int |> Encode.list) |> Encode.optional input____.in_ ), ( "_is_null", Encode.bool |> Encode.optional input____.is_null_ ), ( "_lt", Encode.int |> Encode.optional input____.lt_ ), ( "_lte", Encode.int |> Encode.optional input____.lte_ ), ( "_neq", Encode.int |> Encode.optional input____.neq_ ), ( "_nin", (Encode.int |> Encode.list) |> Encode.optional input____.nin_ ) ]
 
 
+buildMixen_aggregate_bool_exp :
+    (Mixen_aggregate_bool_expOptionalFields -> Mixen_aggregate_bool_expOptionalFields)
+    -> Mixen_aggregate_bool_exp
+buildMixen_aggregate_bool_exp fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { count = Absent }
+    in
+    Mixen_aggregate_bool_exp { count = optionals____.count }
+
+
+type alias Mixen_aggregate_bool_expOptionalFields =
+    { count : OptionalArgument Mixen_aggregate_bool_exp_count }
+
+
+{-| Type alias for the `Mixen_aggregate_bool_exp` attributes. Note that this type
+needs to use the `Mixen_aggregate_bool_exp` type (not just a plain type alias) because it has
+references to itself either directly (recursive) or indirectly (circular). See
+<https://github.com/dillonkearns/elm-graphql/issues/33>.
+-}
+type alias Mixen_aggregate_bool_expRaw =
+    { count : OptionalArgument Mixen_aggregate_bool_exp_count }
+
+
+{-| Type for the Mixen\_aggregate\_bool\_exp input object.
+-}
+type Mixen_aggregate_bool_exp
+    = Mixen_aggregate_bool_exp Mixen_aggregate_bool_expRaw
+
+
+{-| Encode a Mixen\_aggregate\_bool\_exp into a value that can be used as an argument.
+-}
+encodeMixen_aggregate_bool_exp : Mixen_aggregate_bool_exp -> Value
+encodeMixen_aggregate_bool_exp (Mixen_aggregate_bool_exp input____) =
+    Encode.maybeObject
+        [ ( "count", encodeMixen_aggregate_bool_exp_count |> Encode.optional input____.count ) ]
+
+
+buildMixen_aggregate_bool_exp_count :
+    Mixen_aggregate_bool_exp_countRequiredFields
+    -> (Mixen_aggregate_bool_exp_countOptionalFields -> Mixen_aggregate_bool_exp_countOptionalFields)
+    -> Mixen_aggregate_bool_exp_count
+buildMixen_aggregate_bool_exp_count required____ fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { arguments = Absent, distinct = Absent, filter = Absent }
+    in
+    Mixen_aggregate_bool_exp_count { arguments = optionals____.arguments, distinct = optionals____.distinct, filter = optionals____.filter, predicate = required____.predicate }
+
+
+type alias Mixen_aggregate_bool_exp_countRequiredFields =
+    { predicate : Int_comparison_exp }
+
+
+type alias Mixen_aggregate_bool_exp_countOptionalFields =
+    { arguments : OptionalArgument (List Dphones.Enum.Mixen_select_column.Mixen_select_column)
+    , distinct : OptionalArgument Bool
+    , filter : OptionalArgument Mixen_bool_exp
+    }
+
+
+{-| Type alias for the `Mixen_aggregate_bool_exp_count` attributes. Note that this type
+needs to use the `Mixen_aggregate_bool_exp_count` type (not just a plain type alias) because it has
+references to itself either directly (recursive) or indirectly (circular). See
+<https://github.com/dillonkearns/elm-graphql/issues/33>.
+-}
+type alias Mixen_aggregate_bool_exp_countRaw =
+    { arguments : OptionalArgument (List Dphones.Enum.Mixen_select_column.Mixen_select_column)
+    , distinct : OptionalArgument Bool
+    , filter : OptionalArgument Mixen_bool_exp
+    , predicate : Int_comparison_exp
+    }
+
+
+{-| Type for the Mixen\_aggregate\_bool\_exp\_count input object.
+-}
+type Mixen_aggregate_bool_exp_count
+    = Mixen_aggregate_bool_exp_count Mixen_aggregate_bool_exp_countRaw
+
+
+{-| Encode a Mixen\_aggregate\_bool\_exp\_count into a value that can be used as an argument.
+-}
+encodeMixen_aggregate_bool_exp_count : Mixen_aggregate_bool_exp_count -> Value
+encodeMixen_aggregate_bool_exp_count (Mixen_aggregate_bool_exp_count input____) =
+    Encode.maybeObject
+        [ ( "arguments", (Encode.enum Dphones.Enum.Mixen_select_column.toString |> Encode.list) |> Encode.optional input____.arguments ), ( "distinct", Encode.bool |> Encode.optional input____.distinct ), ( "filter", encodeMixen_bool_exp |> Encode.optional input____.filter ), ( "predicate", encodeInt_comparison_exp input____.predicate |> Just ) ]
+
+
+buildMixen_aggregate_order_by :
+    (Mixen_aggregate_order_byOptionalFields -> Mixen_aggregate_order_byOptionalFields)
+    -> Mixen_aggregate_order_by
+buildMixen_aggregate_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { avg = Absent, count = Absent, max = Absent, min = Absent, stddev = Absent, stddev_pop = Absent, stddev_samp = Absent, sum = Absent, var_pop = Absent, var_samp = Absent, variance = Absent }
+    in
+    { avg = optionals____.avg, count = optionals____.count, max = optionals____.max, min = optionals____.min, stddev = optionals____.stddev, stddev_pop = optionals____.stddev_pop, stddev_samp = optionals____.stddev_samp, sum = optionals____.sum, var_pop = optionals____.var_pop, var_samp = optionals____.var_samp, variance = optionals____.variance }
+
+
+type alias Mixen_aggregate_order_byOptionalFields =
+    { avg : OptionalArgument Mixen_avg_order_by
+    , count : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , max : OptionalArgument Mixen_max_order_by
+    , min : OptionalArgument Mixen_min_order_by
+    , stddev : OptionalArgument Mixen_stddev_order_by
+    , stddev_pop : OptionalArgument Mixen_stddev_pop_order_by
+    , stddev_samp : OptionalArgument Mixen_stddev_samp_order_by
+    , sum : OptionalArgument Mixen_sum_order_by
+    , var_pop : OptionalArgument Mixen_var_pop_order_by
+    , var_samp : OptionalArgument Mixen_var_samp_order_by
+    , variance : OptionalArgument Mixen_variance_order_by
+    }
+
+
+{-| Type for the Mixen\_aggregate\_order\_by input object.
+-}
+type alias Mixen_aggregate_order_by =
+    { avg : OptionalArgument Mixen_avg_order_by
+    , count : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , max : OptionalArgument Mixen_max_order_by
+    , min : OptionalArgument Mixen_min_order_by
+    , stddev : OptionalArgument Mixen_stddev_order_by
+    , stddev_pop : OptionalArgument Mixen_stddev_pop_order_by
+    , stddev_samp : OptionalArgument Mixen_stddev_samp_order_by
+    , sum : OptionalArgument Mixen_sum_order_by
+    , var_pop : OptionalArgument Mixen_var_pop_order_by
+    , var_samp : OptionalArgument Mixen_var_samp_order_by
+    , variance : OptionalArgument Mixen_variance_order_by
+    }
+
+
+{-| Encode a Mixen\_aggregate\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_aggregate_order_by : Mixen_aggregate_order_by -> Value
+encodeMixen_aggregate_order_by input____ =
+    Encode.maybeObject
+        [ ( "avg", encodeMixen_avg_order_by |> Encode.optional input____.avg ), ( "count", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.count ), ( "max", encodeMixen_max_order_by |> Encode.optional input____.max ), ( "min", encodeMixen_min_order_by |> Encode.optional input____.min ), ( "stddev", encodeMixen_stddev_order_by |> Encode.optional input____.stddev ), ( "stddev_pop", encodeMixen_stddev_pop_order_by |> Encode.optional input____.stddev_pop ), ( "stddev_samp", encodeMixen_stddev_samp_order_by |> Encode.optional input____.stddev_samp ), ( "sum", encodeMixen_sum_order_by |> Encode.optional input____.sum ), ( "var_pop", encodeMixen_var_pop_order_by |> Encode.optional input____.var_pop ), ( "var_samp", encodeMixen_var_samp_order_by |> Encode.optional input____.var_samp ), ( "variance", encodeMixen_variance_order_by |> Encode.optional input____.variance ) ]
+
+
+buildMixen_arr_rel_insert_input :
+    Mixen_arr_rel_insert_inputRequiredFields
+    -> (Mixen_arr_rel_insert_inputOptionalFields -> Mixen_arr_rel_insert_inputOptionalFields)
+    -> Mixen_arr_rel_insert_input
+buildMixen_arr_rel_insert_input required____ fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { on_conflict = Absent }
+    in
+    Mixen_arr_rel_insert_input { data = required____.data, on_conflict = optionals____.on_conflict }
+
+
+type alias Mixen_arr_rel_insert_inputRequiredFields =
+    { data : List Mixen_insert_input }
+
+
+type alias Mixen_arr_rel_insert_inputOptionalFields =
+    { on_conflict : OptionalArgument Mixen_on_conflict }
+
+
+{-| Type alias for the `Mixen_arr_rel_insert_input` attributes. Note that this type
+needs to use the `Mixen_arr_rel_insert_input` type (not just a plain type alias) because it has
+references to itself either directly (recursive) or indirectly (circular). See
+<https://github.com/dillonkearns/elm-graphql/issues/33>.
+-}
+type alias Mixen_arr_rel_insert_inputRaw =
+    { data : List Mixen_insert_input
+    , on_conflict : OptionalArgument Mixen_on_conflict
+    }
+
+
+{-| Type for the Mixen\_arr\_rel\_insert\_input input object.
+-}
+type Mixen_arr_rel_insert_input
+    = Mixen_arr_rel_insert_input Mixen_arr_rel_insert_inputRaw
+
+
+{-| Encode a Mixen\_arr\_rel\_insert\_input into a value that can be used as an argument.
+-}
+encodeMixen_arr_rel_insert_input : Mixen_arr_rel_insert_input -> Value
+encodeMixen_arr_rel_insert_input (Mixen_arr_rel_insert_input input____) =
+    Encode.maybeObject
+        [ ( "data", (encodeMixen_insert_input |> Encode.list) input____.data |> Just ), ( "on_conflict", encodeMixen_on_conflict |> Encode.optional input____.on_conflict ) ]
+
+
+buildMixen_avg_order_by :
+    (Mixen_avg_order_byOptionalFields -> Mixen_avg_order_byOptionalFields)
+    -> Mixen_avg_order_by
+buildMixen_avg_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { index = Absent, plays = Absent }
+    in
+    { index = optionals____.index, plays = optionals____.plays }
+
+
+type alias Mixen_avg_order_byOptionalFields =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Type for the Mixen\_avg\_order\_by input object.
+-}
+type alias Mixen_avg_order_by =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Encode a Mixen\_avg\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_avg_order_by : Mixen_avg_order_by -> Value
+encodeMixen_avg_order_by input____ =
+    Encode.maybeObject
+        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ) ]
+
+
 buildMixen_bool_exp :
     (Mixen_bool_expOptionalFields -> Mixen_bool_expOptionalFields)
     -> Mixen_bool_exp
@@ -126,15 +349,16 @@ buildMixen_bool_exp fillOptionals____ =
     let
         optionals____ =
             fillOptionals____
-                { and_ = Absent, not_ = Absent, or_ = Absent, index = Absent, list = Absent, plays = Absent, title = Absent, url = Absent }
+                { and_ = Absent, not_ = Absent, or_ = Absent, belongsTo = Absent, index = Absent, list = Absent, plays = Absent, title = Absent, url = Absent }
     in
-    Mixen_bool_exp { and_ = optionals____.and_, not_ = optionals____.not_, or_ = optionals____.or_, index = optionals____.index, list = optionals____.list, plays = optionals____.plays, title = optionals____.title, url = optionals____.url }
+    Mixen_bool_exp { and_ = optionals____.and_, not_ = optionals____.not_, or_ = optionals____.or_, belongsTo = optionals____.belongsTo, index = optionals____.index, list = optionals____.list, plays = optionals____.plays, title = optionals____.title, url = optionals____.url }
 
 
 type alias Mixen_bool_expOptionalFields =
     { and_ : OptionalArgument (List Mixen_bool_exp)
     , not_ : OptionalArgument Mixen_bool_exp
     , or_ : OptionalArgument (List Mixen_bool_exp)
+    , belongsTo : OptionalArgument Set_bool_exp
     , index : OptionalArgument Int_comparison_exp
     , list : OptionalArgument String_comparison_exp
     , plays : OptionalArgument Int_comparison_exp
@@ -152,6 +376,7 @@ type alias Mixen_bool_expRaw =
     { and_ : OptionalArgument (List Mixen_bool_exp)
     , not_ : OptionalArgument Mixen_bool_exp
     , or_ : OptionalArgument (List Mixen_bool_exp)
+    , belongsTo : OptionalArgument Set_bool_exp
     , index : OptionalArgument Int_comparison_exp
     , list : OptionalArgument String_comparison_exp
     , plays : OptionalArgument Int_comparison_exp
@@ -171,7 +396,7 @@ type Mixen_bool_exp
 encodeMixen_bool_exp : Mixen_bool_exp -> Value
 encodeMixen_bool_exp (Mixen_bool_exp input____) =
     Encode.maybeObject
-        [ ( "_and", (encodeMixen_bool_exp |> Encode.list) |> Encode.optional input____.and_ ), ( "_not", encodeMixen_bool_exp |> Encode.optional input____.not_ ), ( "_or", (encodeMixen_bool_exp |> Encode.list) |> Encode.optional input____.or_ ), ( "index", encodeInt_comparison_exp |> Encode.optional input____.index ), ( "list", encodeString_comparison_exp |> Encode.optional input____.list ), ( "plays", encodeInt_comparison_exp |> Encode.optional input____.plays ), ( "title", encodeString_comparison_exp |> Encode.optional input____.title ), ( "url", encodeString_comparison_exp |> Encode.optional input____.url ) ]
+        [ ( "_and", (encodeMixen_bool_exp |> Encode.list) |> Encode.optional input____.and_ ), ( "_not", encodeMixen_bool_exp |> Encode.optional input____.not_ ), ( "_or", (encodeMixen_bool_exp |> Encode.list) |> Encode.optional input____.or_ ), ( "belongsTo", encodeSet_bool_exp |> Encode.optional input____.belongsTo ), ( "index", encodeInt_comparison_exp |> Encode.optional input____.index ), ( "list", encodeString_comparison_exp |> Encode.optional input____.list ), ( "plays", encodeInt_comparison_exp |> Encode.optional input____.plays ), ( "title", encodeString_comparison_exp |> Encode.optional input____.title ), ( "url", encodeString_comparison_exp |> Encode.optional input____.url ) ]
 
 
 buildMixen_inc_input :
@@ -215,13 +440,29 @@ buildMixen_insert_input fillOptionals____ =
     let
         optionals____ =
             fillOptionals____
-                { index = Absent, list = Absent, plays = Absent, title = Absent, url = Absent }
+                { belongsTo = Absent, index = Absent, list = Absent, plays = Absent, title = Absent, url = Absent }
     in
-    { index = optionals____.index, list = optionals____.list, plays = optionals____.plays, title = optionals____.title, url = optionals____.url }
+    Mixen_insert_input { belongsTo = optionals____.belongsTo, index = optionals____.index, list = optionals____.list, plays = optionals____.plays, title = optionals____.title, url = optionals____.url }
 
 
 type alias Mixen_insert_inputOptionalFields =
-    { index : OptionalArgument Int
+    { belongsTo : OptionalArgument Set_obj_rel_insert_input
+    , index : OptionalArgument Int
+    , list : OptionalArgument String
+    , plays : OptionalArgument Int
+    , title : OptionalArgument String
+    , url : OptionalArgument String
+    }
+
+
+{-| Type alias for the `Mixen_insert_input` attributes. Note that this type
+needs to use the `Mixen_insert_input` type (not just a plain type alias) because it has
+references to itself either directly (recursive) or indirectly (circular). See
+<https://github.com/dillonkearns/elm-graphql/issues/33>.
+-}
+type alias Mixen_insert_inputRaw =
+    { belongsTo : OptionalArgument Set_obj_rel_insert_input
+    , index : OptionalArgument Int
     , list : OptionalArgument String
     , plays : OptionalArgument Int
     , title : OptionalArgument String
@@ -231,21 +472,96 @@ type alias Mixen_insert_inputOptionalFields =
 
 {-| Type for the Mixen\_insert\_input input object.
 -}
-type alias Mixen_insert_input =
-    { index : OptionalArgument Int
-    , list : OptionalArgument String
-    , plays : OptionalArgument Int
-    , title : OptionalArgument String
-    , url : OptionalArgument String
-    }
+type Mixen_insert_input
+    = Mixen_insert_input Mixen_insert_inputRaw
 
 
 {-| Encode a Mixen\_insert\_input into a value that can be used as an argument.
 -}
 encodeMixen_insert_input : Mixen_insert_input -> Value
-encodeMixen_insert_input input____ =
+encodeMixen_insert_input (Mixen_insert_input input____) =
     Encode.maybeObject
-        [ ( "index", Encode.int |> Encode.optional input____.index ), ( "list", Encode.string |> Encode.optional input____.list ), ( "plays", Encode.int |> Encode.optional input____.plays ), ( "title", Encode.string |> Encode.optional input____.title ), ( "url", Encode.string |> Encode.optional input____.url ) ]
+        [ ( "belongsTo", encodeSet_obj_rel_insert_input |> Encode.optional input____.belongsTo ), ( "index", Encode.int |> Encode.optional input____.index ), ( "list", Encode.string |> Encode.optional input____.list ), ( "plays", Encode.int |> Encode.optional input____.plays ), ( "title", Encode.string |> Encode.optional input____.title ), ( "url", Encode.string |> Encode.optional input____.url ) ]
+
+
+buildMixen_max_order_by :
+    (Mixen_max_order_byOptionalFields -> Mixen_max_order_byOptionalFields)
+    -> Mixen_max_order_by
+buildMixen_max_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { index = Absent, list = Absent, plays = Absent, title = Absent, url = Absent }
+    in
+    { index = optionals____.index, list = optionals____.list, plays = optionals____.plays, title = optionals____.title, url = optionals____.url }
+
+
+type alias Mixen_max_order_byOptionalFields =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , list : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , title : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , url : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Type for the Mixen\_max\_order\_by input object.
+-}
+type alias Mixen_max_order_by =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , list : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , title : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , url : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Encode a Mixen\_max\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_max_order_by : Mixen_max_order_by -> Value
+encodeMixen_max_order_by input____ =
+    Encode.maybeObject
+        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "list", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.list ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ), ( "title", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.title ), ( "url", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.url ) ]
+
+
+buildMixen_min_order_by :
+    (Mixen_min_order_byOptionalFields -> Mixen_min_order_byOptionalFields)
+    -> Mixen_min_order_by
+buildMixen_min_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { index = Absent, list = Absent, plays = Absent, title = Absent, url = Absent }
+    in
+    { index = optionals____.index, list = optionals____.list, plays = optionals____.plays, title = optionals____.title, url = optionals____.url }
+
+
+type alias Mixen_min_order_byOptionalFields =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , list : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , title : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , url : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Type for the Mixen\_min\_order\_by input object.
+-}
+type alias Mixen_min_order_by =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , list : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , title : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , url : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Encode a Mixen\_min\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_min_order_by : Mixen_min_order_by -> Value
+encodeMixen_min_order_by input____ =
+    Encode.maybeObject
+        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "list", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.list ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ), ( "title", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.title ), ( "url", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.url ) ]
 
 
 buildMixen_on_conflict :
@@ -304,13 +620,14 @@ buildMixen_order_by fillOptionals____ =
     let
         optionals____ =
             fillOptionals____
-                { index = Absent, list = Absent, plays = Absent, title = Absent, url = Absent }
+                { belongsTo = Absent, index = Absent, list = Absent, plays = Absent, title = Absent, url = Absent }
     in
-    { index = optionals____.index, list = optionals____.list, plays = optionals____.plays, title = optionals____.title, url = optionals____.url }
+    { belongsTo = optionals____.belongsTo, index = optionals____.index, list = optionals____.list, plays = optionals____.plays, title = optionals____.title, url = optionals____.url }
 
 
 type alias Mixen_order_byOptionalFields =
-    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    { belongsTo : OptionalArgument Set_order_by
+    , index : OptionalArgument Dphones.Enum.Order_by.Order_by
     , list : OptionalArgument Dphones.Enum.Order_by.Order_by
     , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
     , title : OptionalArgument Dphones.Enum.Order_by.Order_by
@@ -321,7 +638,8 @@ type alias Mixen_order_byOptionalFields =
 {-| Type for the Mixen\_order\_by input object.
 -}
 type alias Mixen_order_by =
-    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    { belongsTo : OptionalArgument Set_order_by
+    , index : OptionalArgument Dphones.Enum.Order_by.Order_by
     , list : OptionalArgument Dphones.Enum.Order_by.Order_by
     , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
     , title : OptionalArgument Dphones.Enum.Order_by.Order_by
@@ -334,7 +652,7 @@ type alias Mixen_order_by =
 encodeMixen_order_by : Mixen_order_by -> Value
 encodeMixen_order_by input____ =
     Encode.maybeObject
-        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "list", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.list ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ), ( "title", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.title ), ( "url", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.url ) ]
+        [ ( "belongsTo", encodeSet_order_by |> Encode.optional input____.belongsTo ), ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "list", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.list ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ), ( "title", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.title ), ( "url", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.url ) ]
 
 
 buildMixen_pk_columns_input :
@@ -400,6 +718,108 @@ encodeMixen_set_input : Mixen_set_input -> Value
 encodeMixen_set_input input____ =
     Encode.maybeObject
         [ ( "index", Encode.int |> Encode.optional input____.index ), ( "list", Encode.string |> Encode.optional input____.list ), ( "plays", Encode.int |> Encode.optional input____.plays ), ( "title", Encode.string |> Encode.optional input____.title ), ( "url", Encode.string |> Encode.optional input____.url ) ]
+
+
+buildMixen_stddev_order_by :
+    (Mixen_stddev_order_byOptionalFields -> Mixen_stddev_order_byOptionalFields)
+    -> Mixen_stddev_order_by
+buildMixen_stddev_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { index = Absent, plays = Absent }
+    in
+    { index = optionals____.index, plays = optionals____.plays }
+
+
+type alias Mixen_stddev_order_byOptionalFields =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Type for the Mixen\_stddev\_order\_by input object.
+-}
+type alias Mixen_stddev_order_by =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Encode a Mixen\_stddev\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_stddev_order_by : Mixen_stddev_order_by -> Value
+encodeMixen_stddev_order_by input____ =
+    Encode.maybeObject
+        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ) ]
+
+
+buildMixen_stddev_pop_order_by :
+    (Mixen_stddev_pop_order_byOptionalFields -> Mixen_stddev_pop_order_byOptionalFields)
+    -> Mixen_stddev_pop_order_by
+buildMixen_stddev_pop_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { index = Absent, plays = Absent }
+    in
+    { index = optionals____.index, plays = optionals____.plays }
+
+
+type alias Mixen_stddev_pop_order_byOptionalFields =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Type for the Mixen\_stddev\_pop\_order\_by input object.
+-}
+type alias Mixen_stddev_pop_order_by =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Encode a Mixen\_stddev\_pop\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_stddev_pop_order_by : Mixen_stddev_pop_order_by -> Value
+encodeMixen_stddev_pop_order_by input____ =
+    Encode.maybeObject
+        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ) ]
+
+
+buildMixen_stddev_samp_order_by :
+    (Mixen_stddev_samp_order_byOptionalFields -> Mixen_stddev_samp_order_byOptionalFields)
+    -> Mixen_stddev_samp_order_by
+buildMixen_stddev_samp_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { index = Absent, plays = Absent }
+    in
+    { index = optionals____.index, plays = optionals____.plays }
+
+
+type alias Mixen_stddev_samp_order_byOptionalFields =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Type for the Mixen\_stddev\_samp\_order\_by input object.
+-}
+type alias Mixen_stddev_samp_order_by =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Encode a Mixen\_stddev\_samp\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_stddev_samp_order_by : Mixen_stddev_samp_order_by -> Value
+encodeMixen_stddev_samp_order_by input____ =
+    Encode.maybeObject
+        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ) ]
 
 
 buildMixen_stream_cursor_input :
@@ -479,6 +899,40 @@ encodeMixen_stream_cursor_value_input input____ =
         [ ( "index", Encode.int |> Encode.optional input____.index ), ( "list", Encode.string |> Encode.optional input____.list ), ( "plays", Encode.int |> Encode.optional input____.plays ), ( "title", Encode.string |> Encode.optional input____.title ), ( "url", Encode.string |> Encode.optional input____.url ) ]
 
 
+buildMixen_sum_order_by :
+    (Mixen_sum_order_byOptionalFields -> Mixen_sum_order_byOptionalFields)
+    -> Mixen_sum_order_by
+buildMixen_sum_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { index = Absent, plays = Absent }
+    in
+    { index = optionals____.index, plays = optionals____.plays }
+
+
+type alias Mixen_sum_order_byOptionalFields =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Type for the Mixen\_sum\_order\_by input object.
+-}
+type alias Mixen_sum_order_by =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Encode a Mixen\_sum\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_sum_order_by : Mixen_sum_order_by -> Value
+encodeMixen_sum_order_by input____ =
+    Encode.maybeObject
+        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ) ]
+
+
 buildMixen_updates :
     Mixen_updatesRequiredFields
     -> (Mixen_updatesOptionalFields -> Mixen_updatesOptionalFields)
@@ -528,6 +982,108 @@ encodeMixen_updates (Mixen_updates input____) =
         [ ( "_inc", encodeMixen_inc_input |> Encode.optional input____.inc_ ), ( "_set", encodeMixen_set_input |> Encode.optional input____.set_ ), ( "where", encodeMixen_bool_exp input____.where_ |> Just ) ]
 
 
+buildMixen_var_pop_order_by :
+    (Mixen_var_pop_order_byOptionalFields -> Mixen_var_pop_order_byOptionalFields)
+    -> Mixen_var_pop_order_by
+buildMixen_var_pop_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { index = Absent, plays = Absent }
+    in
+    { index = optionals____.index, plays = optionals____.plays }
+
+
+type alias Mixen_var_pop_order_byOptionalFields =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Type for the Mixen\_var\_pop\_order\_by input object.
+-}
+type alias Mixen_var_pop_order_by =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Encode a Mixen\_var\_pop\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_var_pop_order_by : Mixen_var_pop_order_by -> Value
+encodeMixen_var_pop_order_by input____ =
+    Encode.maybeObject
+        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ) ]
+
+
+buildMixen_var_samp_order_by :
+    (Mixen_var_samp_order_byOptionalFields -> Mixen_var_samp_order_byOptionalFields)
+    -> Mixen_var_samp_order_by
+buildMixen_var_samp_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { index = Absent, plays = Absent }
+    in
+    { index = optionals____.index, plays = optionals____.plays }
+
+
+type alias Mixen_var_samp_order_byOptionalFields =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Type for the Mixen\_var\_samp\_order\_by input object.
+-}
+type alias Mixen_var_samp_order_by =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Encode a Mixen\_var\_samp\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_var_samp_order_by : Mixen_var_samp_order_by -> Value
+encodeMixen_var_samp_order_by input____ =
+    Encode.maybeObject
+        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ) ]
+
+
+buildMixen_variance_order_by :
+    (Mixen_variance_order_byOptionalFields -> Mixen_variance_order_byOptionalFields)
+    -> Mixen_variance_order_by
+buildMixen_variance_order_by fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { index = Absent, plays = Absent }
+    in
+    { index = optionals____.index, plays = optionals____.plays }
+
+
+type alias Mixen_variance_order_byOptionalFields =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Type for the Mixen\_variance\_order\_by input object.
+-}
+type alias Mixen_variance_order_by =
+    { index : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , plays : OptionalArgument Dphones.Enum.Order_by.Order_by
+    }
+
+
+{-| Encode a Mixen\_variance\_order\_by into a value that can be used as an argument.
+-}
+encodeMixen_variance_order_by : Mixen_variance_order_by -> Value
+encodeMixen_variance_order_by input____ =
+    Encode.maybeObject
+        [ ( "index", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.index ), ( "plays", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.plays ) ]
+
+
 buildSet_bool_exp :
     (Set_bool_expOptionalFields -> Set_bool_expOptionalFields)
     -> Set_bool_exp
@@ -535,9 +1091,9 @@ buildSet_bool_exp fillOptionals____ =
     let
         optionals____ =
             fillOptionals____
-                { and_ = Absent, not_ = Absent, or_ = Absent, date = Absent, tag = Absent, title = Absent }
+                { and_ = Absent, not_ = Absent, or_ = Absent, date = Absent, mixen = Absent, mixen_aggregate = Absent, tag = Absent, title = Absent }
     in
-    Set_bool_exp { and_ = optionals____.and_, not_ = optionals____.not_, or_ = optionals____.or_, date = optionals____.date, tag = optionals____.tag, title = optionals____.title }
+    Set_bool_exp { and_ = optionals____.and_, not_ = optionals____.not_, or_ = optionals____.or_, date = optionals____.date, mixen = optionals____.mixen, mixen_aggregate = optionals____.mixen_aggregate, tag = optionals____.tag, title = optionals____.title }
 
 
 type alias Set_bool_expOptionalFields =
@@ -545,6 +1101,8 @@ type alias Set_bool_expOptionalFields =
     , not_ : OptionalArgument Set_bool_exp
     , or_ : OptionalArgument (List Set_bool_exp)
     , date : OptionalArgument Date_comparison_exp
+    , mixen : OptionalArgument Mixen_bool_exp
+    , mixen_aggregate : OptionalArgument Mixen_aggregate_bool_exp
     , tag : OptionalArgument String_comparison_exp
     , title : OptionalArgument String_comparison_exp
     }
@@ -560,6 +1118,8 @@ type alias Set_bool_expRaw =
     , not_ : OptionalArgument Set_bool_exp
     , or_ : OptionalArgument (List Set_bool_exp)
     , date : OptionalArgument Date_comparison_exp
+    , mixen : OptionalArgument Mixen_bool_exp
+    , mixen_aggregate : OptionalArgument Mixen_aggregate_bool_exp
     , tag : OptionalArgument String_comparison_exp
     , title : OptionalArgument String_comparison_exp
     }
@@ -576,7 +1136,7 @@ type Set_bool_exp
 encodeSet_bool_exp : Set_bool_exp -> Value
 encodeSet_bool_exp (Set_bool_exp input____) =
     Encode.maybeObject
-        [ ( "_and", (encodeSet_bool_exp |> Encode.list) |> Encode.optional input____.and_ ), ( "_not", encodeSet_bool_exp |> Encode.optional input____.not_ ), ( "_or", (encodeSet_bool_exp |> Encode.list) |> Encode.optional input____.or_ ), ( "date", encodeDate_comparison_exp |> Encode.optional input____.date ), ( "tag", encodeString_comparison_exp |> Encode.optional input____.tag ), ( "title", encodeString_comparison_exp |> Encode.optional input____.title ) ]
+        [ ( "_and", (encodeSet_bool_exp |> Encode.list) |> Encode.optional input____.and_ ), ( "_not", encodeSet_bool_exp |> Encode.optional input____.not_ ), ( "_or", (encodeSet_bool_exp |> Encode.list) |> Encode.optional input____.or_ ), ( "date", encodeDate_comparison_exp |> Encode.optional input____.date ), ( "mixen", encodeMixen_bool_exp |> Encode.optional input____.mixen ), ( "mixen_aggregate", encodeMixen_aggregate_bool_exp |> Encode.optional input____.mixen_aggregate ), ( "tag", encodeString_comparison_exp |> Encode.optional input____.tag ), ( "title", encodeString_comparison_exp |> Encode.optional input____.title ) ]
 
 
 buildSet_insert_input :
@@ -586,13 +1146,27 @@ buildSet_insert_input fillOptionals____ =
     let
         optionals____ =
             fillOptionals____
-                { date = Absent, tag = Absent, title = Absent }
+                { date = Absent, mixen = Absent, tag = Absent, title = Absent }
     in
-    { date = optionals____.date, tag = optionals____.tag, title = optionals____.title }
+    Set_insert_input { date = optionals____.date, mixen = optionals____.mixen, tag = optionals____.tag, title = optionals____.title }
 
 
 type alias Set_insert_inputOptionalFields =
     { date : OptionalArgument Dphones.ScalarCodecs.Date
+    , mixen : OptionalArgument Mixen_arr_rel_insert_input
+    , tag : OptionalArgument String
+    , title : OptionalArgument String
+    }
+
+
+{-| Type alias for the `Set_insert_input` attributes. Note that this type
+needs to use the `Set_insert_input` type (not just a plain type alias) because it has
+references to itself either directly (recursive) or indirectly (circular). See
+<https://github.com/dillonkearns/elm-graphql/issues/33>.
+-}
+type alias Set_insert_inputRaw =
+    { date : OptionalArgument Dphones.ScalarCodecs.Date
+    , mixen : OptionalArgument Mixen_arr_rel_insert_input
     , tag : OptionalArgument String
     , title : OptionalArgument String
     }
@@ -600,19 +1174,62 @@ type alias Set_insert_inputOptionalFields =
 
 {-| Type for the Set\_insert\_input input object.
 -}
-type alias Set_insert_input =
-    { date : OptionalArgument Dphones.ScalarCodecs.Date
-    , tag : OptionalArgument String
-    , title : OptionalArgument String
-    }
+type Set_insert_input
+    = Set_insert_input Set_insert_inputRaw
 
 
 {-| Encode a Set\_insert\_input into a value that can be used as an argument.
 -}
 encodeSet_insert_input : Set_insert_input -> Value
-encodeSet_insert_input input____ =
+encodeSet_insert_input (Set_insert_input input____) =
     Encode.maybeObject
-        [ ( "date", (Dphones.ScalarCodecs.codecs |> Dphones.Scalar.unwrapEncoder .codecDate) |> Encode.optional input____.date ), ( "tag", Encode.string |> Encode.optional input____.tag ), ( "title", Encode.string |> Encode.optional input____.title ) ]
+        [ ( "date", (Dphones.ScalarCodecs.codecs |> Dphones.Scalar.unwrapEncoder .codecDate) |> Encode.optional input____.date ), ( "mixen", encodeMixen_arr_rel_insert_input |> Encode.optional input____.mixen ), ( "tag", Encode.string |> Encode.optional input____.tag ), ( "title", Encode.string |> Encode.optional input____.title ) ]
+
+
+buildSet_obj_rel_insert_input :
+    Set_obj_rel_insert_inputRequiredFields
+    -> (Set_obj_rel_insert_inputOptionalFields -> Set_obj_rel_insert_inputOptionalFields)
+    -> Set_obj_rel_insert_input
+buildSet_obj_rel_insert_input required____ fillOptionals____ =
+    let
+        optionals____ =
+            fillOptionals____
+                { on_conflict = Absent }
+    in
+    Set_obj_rel_insert_input { data = required____.data, on_conflict = optionals____.on_conflict }
+
+
+type alias Set_obj_rel_insert_inputRequiredFields =
+    { data : Set_insert_input }
+
+
+type alias Set_obj_rel_insert_inputOptionalFields =
+    { on_conflict : OptionalArgument Set_on_conflict }
+
+
+{-| Type alias for the `Set_obj_rel_insert_input` attributes. Note that this type
+needs to use the `Set_obj_rel_insert_input` type (not just a plain type alias) because it has
+references to itself either directly (recursive) or indirectly (circular). See
+<https://github.com/dillonkearns/elm-graphql/issues/33>.
+-}
+type alias Set_obj_rel_insert_inputRaw =
+    { data : Set_insert_input
+    , on_conflict : OptionalArgument Set_on_conflict
+    }
+
+
+{-| Type for the Set\_obj\_rel\_insert\_input input object.
+-}
+type Set_obj_rel_insert_input
+    = Set_obj_rel_insert_input Set_obj_rel_insert_inputRaw
+
+
+{-| Encode a Set\_obj\_rel\_insert\_input into a value that can be used as an argument.
+-}
+encodeSet_obj_rel_insert_input : Set_obj_rel_insert_input -> Value
+encodeSet_obj_rel_insert_input (Set_obj_rel_insert_input input____) =
+    Encode.maybeObject
+        [ ( "data", encodeSet_insert_input input____.data |> Just ), ( "on_conflict", encodeSet_on_conflict |> Encode.optional input____.on_conflict ) ]
 
 
 buildSet_on_conflict :
@@ -671,13 +1288,14 @@ buildSet_order_by fillOptionals____ =
     let
         optionals____ =
             fillOptionals____
-                { date = Absent, tag = Absent, title = Absent }
+                { date = Absent, mixen_aggregate = Absent, tag = Absent, title = Absent }
     in
-    { date = optionals____.date, tag = optionals____.tag, title = optionals____.title }
+    { date = optionals____.date, mixen_aggregate = optionals____.mixen_aggregate, tag = optionals____.tag, title = optionals____.title }
 
 
 type alias Set_order_byOptionalFields =
     { date : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , mixen_aggregate : OptionalArgument Mixen_aggregate_order_by
     , tag : OptionalArgument Dphones.Enum.Order_by.Order_by
     , title : OptionalArgument Dphones.Enum.Order_by.Order_by
     }
@@ -687,6 +1305,7 @@ type alias Set_order_byOptionalFields =
 -}
 type alias Set_order_by =
     { date : OptionalArgument Dphones.Enum.Order_by.Order_by
+    , mixen_aggregate : OptionalArgument Mixen_aggregate_order_by
     , tag : OptionalArgument Dphones.Enum.Order_by.Order_by
     , title : OptionalArgument Dphones.Enum.Order_by.Order_by
     }
@@ -697,7 +1316,7 @@ type alias Set_order_by =
 encodeSet_order_by : Set_order_by -> Value
 encodeSet_order_by input____ =
     Encode.maybeObject
-        [ ( "date", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.date ), ( "tag", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.tag ), ( "title", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.title ) ]
+        [ ( "date", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.date ), ( "mixen_aggregate", encodeMixen_aggregate_order_by |> Encode.optional input____.mixen_aggregate ), ( "tag", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.tag ), ( "title", Encode.enum Dphones.Enum.Order_by.toString |> Encode.optional input____.title ) ]
 
 
 buildSet_pk_columns_input :

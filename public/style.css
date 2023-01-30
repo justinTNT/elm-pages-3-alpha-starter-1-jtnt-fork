@@ -801,3 +801,13 @@ div#large-visualization {
     display: none;
 }
 
+.listed-album-cover {
+    width: 22em;
+    padding: 2em;
+    float: left;
+}
+
+.listed-album-cover img {
+    width: 100%;
+}
+

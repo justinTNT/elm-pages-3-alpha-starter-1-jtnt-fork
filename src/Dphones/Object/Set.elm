@@ -4,6 +4,7 @@
 
 module Dphones.Object.Set exposing (..)
 
+import Dphones.Enum.Mixen_select_column
 import Dphones.InputObject
 import Dphones.Interface
 import Dphones.Object
@@ -22,6 +23,74 @@ import Json.Decode as Decode
 date : SelectionSet Dphones.ScalarCodecs.Date Dphones.Object.Set
 date =
     Object.selectionForField "ScalarCodecs.Date" "date" [] (Dphones.ScalarCodecs.codecs |> Dphones.Scalar.unwrapCodecs |> .codecDate |> .decoder)
+
+
+type alias MixenOptionalArguments =
+    { distinct_on : OptionalArgument (List Dphones.Enum.Mixen_select_column.Mixen_select_column)
+    , limit : OptionalArgument Int
+    , offset : OptionalArgument Int
+    , order_by : OptionalArgument (List Dphones.InputObject.Mixen_order_by)
+    , where_ : OptionalArgument Dphones.InputObject.Mixen_bool_exp
+    }
+
+
+{-| An array relationship
+
+  - distinct\_on - distinct select on columns
+  - limit - limit the number of rows returned
+  - offset - skip the first n rows. Use only with order\_by
+  - order\_by - sort the rows by one or more columns
+  - where\_ - filter the rows returned
+
+-}
+mixen :
+    (MixenOptionalArguments -> MixenOptionalArguments)
+    -> SelectionSet decodesTo Dphones.Object.Mixen
+    -> SelectionSet (List decodesTo) Dphones.Object.Set
+mixen fillInOptionals____ object____ =
+    let
+        filledInOptionals____ =
+            fillInOptionals____ { distinct_on = Absent, limit = Absent, offset = Absent, order_by = Absent, where_ = Absent }
+
+        optionalArgs____ =
+            [ Argument.optional "distinct_on" filledInOptionals____.distinct_on (Encode.enum Dphones.Enum.Mixen_select_column.toString |> Encode.list), Argument.optional "limit" filledInOptionals____.limit Encode.int, Argument.optional "offset" filledInOptionals____.offset Encode.int, Argument.optional "order_by" filledInOptionals____.order_by (Dphones.InputObject.encodeMixen_order_by |> Encode.list), Argument.optional "where" filledInOptionals____.where_ Dphones.InputObject.encodeMixen_bool_exp ]
+                |> List.filterMap Basics.identity
+    in
+    Object.selectionForCompositeField "mixen" optionalArgs____ object____ (Basics.identity >> Decode.list)
+
+
+type alias MixenAggregateOptionalArguments =
+    { distinct_on : OptionalArgument (List Dphones.Enum.Mixen_select_column.Mixen_select_column)
+    , limit : OptionalArgument Int
+    , offset : OptionalArgument Int
+    , order_by : OptionalArgument (List Dphones.InputObject.Mixen_order_by)
+    , where_ : OptionalArgument Dphones.InputObject.Mixen_bool_exp
+    }
+
+
+{-| An aggregate relationship
+
+  - distinct\_on - distinct select on columns
+  - limit - limit the number of rows returned
+  - offset - skip the first n rows. Use only with order\_by
+  - order\_by - sort the rows by one or more columns
+  - where\_ - filter the rows returned
+
+-}
+mixen_aggregate :
+    (MixenAggregateOptionalArguments -> MixenAggregateOptionalArguments)
+    -> SelectionSet decodesTo Dphones.Object.Mixen_aggregate
+    -> SelectionSet decodesTo Dphones.Object.Set
+mixen_aggregate fillInOptionals____ object____ =
+    let
+        filledInOptionals____ =
+            fillInOptionals____ { distinct_on = Absent, limit = Absent, offset = Absent, order_by = Absent, where_ = Absent }
+
+        optionalArgs____ =
+            [ Argument.optional "distinct_on" filledInOptionals____.distinct_on (Encode.enum Dphones.Enum.Mixen_select_column.toString |> Encode.list), Argument.optional "limit" filledInOptionals____.limit Encode.int, Argument.optional "offset" filledInOptionals____.offset Encode.int, Argument.optional "order_by" filledInOptionals____.order_by (Dphones.InputObject.encodeMixen_order_by |> Encode.list), Argument.optional "where" filledInOptionals____.where_ Dphones.InputObject.encodeMixen_bool_exp ]
+                |> List.filterMap Basics.identity
+    in
+    Object.selectionForCompositeField "mixen_aggregate" optionalArgs____ object____ Basics.identity
 
 
 tag : SelectionSet String Dphones.Object.Set
