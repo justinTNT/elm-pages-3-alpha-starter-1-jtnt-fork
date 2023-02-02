@@ -153,7 +153,7 @@ view _ _ static =
             Html.a [ href ("/superset/" ++ set.tag) ]
                 [ Html.div [ class "listed-album-cover" ]
                     [ Html.img [ src (List.head set.mixen |> Maybe.map (.url >> String.replace ".mp3" ".jpg") |> Maybe.withDefault "") ] []
-                    , Html.text set.title
+                    , Html.span [] [ Html.text set.title ]
                     ]
                 ]
     in

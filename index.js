@@ -17,12 +17,8 @@ export default {
           const initObj =
               { songs: setList.mixen.map(mixToSong(setList.set)),
                 callbacks: {
-                    play: () => {
-                        document.getElementById('amplitude-left').classList.add('playing');
-                    },
-                    pause: () => {
-                        document.getElementById('amplitude-left').classList.remove('playing');
-                    }
+                    play: () => { document.getElementById('amplitude-left').classList.add('playing'); },
+                    pause: () => { document.getElementById('amplitude-left').classList.remove('playing'); }
                 },
               };
           let anode = Amplitude.getAnalyser();

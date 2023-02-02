@@ -59,20 +59,26 @@ div#amplitude-left.playing img.album-art.cover {
 div#amplitude-left img.album-art.disc {
   margin-top: -100%;
   border-radius: 50%;
-}
-div#amplitude-left.playing img.album-art.disc {
   animation-name: spin;
   animation-duration: 33000ms;
-  animation-iteration-count: infinite;
   animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+div#amplitude-left.playing img.album-art.disc {
+  animation-play-state: running;
 }
 @keyframes pulse {
-    0% { opacity:0.42; }
+    0% { opacity:0.13; }
     50% { opacity:0.69; }
-    100% { opacity:0.42; }
+    100% { opacity:0.13; }
 }
 @keyframes spin {
     from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+@keyframes spinoff {
     to { transform:rotate(360deg); }
 }
 div#amplitude-left div#player-left-bottom {
@@ -809,5 +815,13 @@ div#large-visualization {
 
 .listed-album-cover img {
     width: 100%;
+    transform: skew(3deg, 2deg);
+    border-radius: 4px;
+    box-shadow: -7px 6px 5px lightgray;
+}
+
+.listed-album-cover span {
+    font-size: 1.5em;
+    float: right;
 }
 
