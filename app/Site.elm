@@ -85,5 +85,4 @@ icon format width =
 
 myIcon : Int -> Pages.Url.Url
 myIcon width =
-    -- Cloudinary.urlSquare "v1603234028/elm-pages/elm-pages-icon" (Just ".png") width -- TODO
-    Pages.Url.external "https://s3.ap-southeast-2.amazonaws.com/dphon.es/mixtapes/enigma/mix23A.jpg"
+    Pages.Url.external ("https://s3.ap-southeast-2.amazonaws.com/dphon.es/mixtapes/mixtapes-" ++ String.fromInt width ++ "-icon.png")
