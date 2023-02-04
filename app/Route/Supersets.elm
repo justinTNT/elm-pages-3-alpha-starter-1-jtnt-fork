@@ -61,10 +61,6 @@ type alias Mixen =
     { index : Maybe Int, url : String }
 
 
-type alias MixenList =
-    List Mixen
-
-
 type alias Set =
     { tag : String, title : String, mixen : List Mixen }
 
@@ -128,7 +124,7 @@ head :
 head _ =
     Seo.summary
         { canonicalUrlOverride = Nothing
-        , siteName = "comefile.me"
+        , siteName = "dont.saymay.be"
         , image =
             { url = Pages.Url.external "TODO"
             , alt = "DJ Dope Inc. super-sets"

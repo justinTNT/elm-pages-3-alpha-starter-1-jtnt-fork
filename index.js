@@ -20,6 +20,7 @@ export default {
                     play: () => { document.getElementById('amplitude-left').classList.add('playing'); },
                     pause: () => { document.getElementById('amplitude-left').classList.remove('playing'); }
                 },
+                volume: 100
               };
           let anode = Amplitude.getAnalyser();
           if (anode) {
