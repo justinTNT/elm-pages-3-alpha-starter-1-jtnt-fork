@@ -49,7 +49,7 @@ manifest : Data -> Manifest.Config
 manifest static =
     Manifest.init
         { name = static.siteName
-        , description = "DPhones - " ++ tagline
+        , description = "DJ Dope Inc. - " ++ tagline
         , startUrl = Route.Index |> Route.toPath
         , icons =
             [ icon webp 192
@@ -63,7 +63,7 @@ manifest static =
 
 tagline : String
 tagline =
-    "collecting the mixen of DJ Dope Inc."
+    "aussie lectroni caNT"
 
 
 webp : MimeType.MimeImage
