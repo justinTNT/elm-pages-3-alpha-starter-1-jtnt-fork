@@ -7,7 +7,7 @@ export default {
   adapter,
   headTagsTemplate(context) {
     return `
-<script type="text/javascript" src="amplitude.min.js"></script>
+<script type="text/javascript" src="/amplitude.min.js"></script>
 <link rel="stylesheet" href="/style.css" />
 <meta name="generator" content="elm-pages v${context.cliVersion}" />
 `;
