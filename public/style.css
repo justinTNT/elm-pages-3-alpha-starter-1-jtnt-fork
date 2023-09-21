@@ -461,10 +461,10 @@ div#control-container div#repeat-container div#repeat {
   cursor: pointer;
 }
 div#control-container div#repeat-container div#repeat.amplitude-repeat-off {
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/repeat-off.svg");
+  background: url("/images/repeat-off.svg");
 }
 div#control-container div#repeat-container div#repeat.amplitude-repeat-on {
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/repeat-on.svg");
+  background: url("/images/repeat-on.svg");
 }
 div#control-container div#repeat-container div#shuffle {
   width: 23px;
@@ -473,10 +473,10 @@ div#control-container div#repeat-container div#shuffle {
   float: right;
 }
 div#control-container div#repeat-container div#shuffle.amplitude-shuffle-off {
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/shuffle-off.svg");
+  background: url("/images/shuffle-off.svg");
 }
 div#control-container div#repeat-container div#shuffle.amplitude-shuffle-on {
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/shuffle-on.svg");
+  background: url("/images/shuffle-on.svg");
 }
 @media all and (-ms-high-contrast: none) {
   div#control-container *::-ms-backdrop,
@@ -498,7 +498,7 @@ div#control-container div#central-control-container div#central-controls div#pre
   width: 40px;
   height: 40px;
   cursor: pointer;
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/prev.svg");
+  background: url("/images/prev.svg");
   background-repeat: no-repeat;
   float: left;
   margin-top: 10px;
@@ -512,17 +512,17 @@ div#control-container div#central-control-container div#central-controls div#pla
   float: left;
 }
 div#control-container div#central-control-container div#central-controls div#play-pause.amplitude-paused {
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/play.svg");
+  background: url("/images/play.svg");
 }
 div#control-container div#central-control-container div#central-controls div#play-pause.amplitude-playing {
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/pause.svg");
+  background: url("/images/pause.svg");
 }
 div#control-container div#central-control-container div#central-controls div#next {
   display: inline-block;
   width: 40px;
   height: 40px;
   cursor: pointer;
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/next.svg");
+  background: url("/images/next.svg");
   background-repeat: no-repeat;
   float: left;
   margin-top: 10px;
@@ -540,10 +540,10 @@ div#control-container div#volume-container div#shuffle-right {
   margin: auto;
 }
 div#control-container div#volume-container div#shuffle-right.amplitude-shuffle-off {
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/shuffle-off.svg");
+  background: url("/images/shuffle-off.svg");
 }
 div#control-container div#volume-container div#shuffle-right.amplitude-shuffle-on {
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/shuffle-on.svg");
+  background: url("/images/shuffle-on.svg");
 }
 div#control-container div.amplitude-mute {
   cursor: pointer;
@@ -552,11 +552,11 @@ div#control-container div.amplitude-mute {
   float: left;
 }
 div#control-container div.amplitude-mute.amplitude-not-muted {
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-players/volume.svg");
+  background: url("/images/volume.svg");
   background-repeat: no-repeat;
 }
 div#control-container div.amplitude-mute.amplitude-muted {
-  background: url("https://521dimensions.com/img/open-source/amplitudejs/blue-player/mute.svg");
+  background: url("/images/mute.svg");
   background-repeat: no-repeat;
 }
 div#control-container:after {
