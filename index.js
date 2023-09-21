@@ -27,7 +27,9 @@ export default {
             Amplitude.pause();
             anode.context.close().then(() => {
                   Amplitude.init(initObj);
-            });
+            }).catch(() => {
+                  Amplitude.init(initObj);
+	    });
           } else {
                   Amplitude.init(initObj);
           }
