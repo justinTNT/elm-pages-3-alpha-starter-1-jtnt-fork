@@ -5,7 +5,7 @@ const mixToSong = setName => mix => {
     name          : mix.title,
     artist        : "DJ Dope Inc.",
     album         : setName,
-    url           : mix.url,
+    url           : mix.url + "?v=" + (new Date()),
     cover_art_url : mix.url.replace(/.mp3/, ".jpg")
   };
 };
