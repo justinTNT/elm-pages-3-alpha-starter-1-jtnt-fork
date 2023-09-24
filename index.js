@@ -25,10 +25,12 @@ export default {
           let anode = Amplitude.getAnalyser();
           if (anode) {
             Amplitude.pause();
-            anode.context.close().then(() => {
+            anode.context.close().finally(() => {
+                  Amplitude.bindElements();
                   Amplitude.init(initObj);
-            }).catch(() => {
-                  Amplitude.init(initObj);
+                  if (/chrome/i.test( navigator.userAgent )) {
+                      window.location.reload();
+                  }
 	    });
           } else {
                   Amplitude.init(initObj);
